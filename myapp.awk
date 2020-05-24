@@ -1,0 +1,4 @@
+{
+    # comment
+    print $4
+}
