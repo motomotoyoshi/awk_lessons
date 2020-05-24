@@ -1,7 +1,9 @@
 BEGIN {
-    OFS = "@"
-    ORS = "|"
+    total = 0
 }
-NR > 5 && NR < 10 {
-    print $3, $4
+NR < 4 {  
+    total += $4
+}
+END {
+    print total
 }
