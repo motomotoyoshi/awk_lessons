@@ -1,4 +1,7 @@
 {
     # comment
-    print $4
+    #print $3 ":" $4
+    #print $0
+    #print NF, $NF
+    print NR ":" $0
 }
