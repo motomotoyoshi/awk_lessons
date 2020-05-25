@@ -4,17 +4,24 @@
 }
 END {
     for (name in total) {
-        printf "Name: %-10s Total: %'10d\n", name, total[name]
+        printf "Name: %-10s Total: %'10d %s\n", name, total[name], getBarGraph(total[name])
     }
 }
 
 function getSum() {
     sum = 0
-    i =4
     for (i = 4; i <= 7; i++){
         sum += $i
     }
     return sum
+}
+
+function getBarGraph(total) {
+    s = ""
+    for (i = 1; i <= int(total / 1000); i++) {
+        s = s "*"
+    }
+    return s
 }
 
 function getRank(sum) {
@@ -22,7 +29,7 @@ function getRank(sum) {
     ranks["first"] = "Gold"
     ranks["second"] = "Silver"
     ranks["third"] = "Bronze"
-    if ( sun > 1000) {
+    if ( sum > 1000) {
         rank = ranks["first"]
     } else if (sum > 800) {
         rank = ranks["second"]
