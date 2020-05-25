@@ -1,9 +1,4 @@
-BEGIN {
-    total = 0
-}
-NR < 4 {  
-    total += $4
-}
-END {
-    print total
+NR > 96 {
+    # print $3, ($4+$5+$6+$7), (($4+$5+$6+$7)/4)
+    printf "Name: %-10s Sum: %'10d Avg: %010.2f\n", $3, ($4+$5+$6+$7), (($4+$5+$6+$7)/4)
 }
