@@ -1,10 +1,9 @@
-NR < 31 {
-    print NR ":" $0
-    if (NR % 10 == 0) {
-        print "------"
-    } else if (NR % 5 == 0) {
-        print "---"
-    } else {
-        print "-"
+NR < 4 {
+    sum = 0
+    i =4
+    while (i <= 7) {
+        sum += $i
+        i++
     }
+    printf "Name: %-10s Sum: %10d\n", $3, sum
 }
