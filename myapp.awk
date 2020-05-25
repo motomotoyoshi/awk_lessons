@@ -1,7 +1,11 @@
-NR < 4 {
+{
     sum = getSum()
-    rank = getRank(sum)
-    printf "Name: %-10s Sum: %10d Rank: %-10s\n", $3, sum, rank
+    total[$3] += sum
+}
+END {
+    for (name in total) {
+        printf "Name: %-10s Total: %'10d\n", name, total[name]
+    }
 }
 
 function getSum() {
@@ -14,13 +18,16 @@ function getSum() {
 }
 
 function getRank(sum) {
-    split("Gold Silver Bronze", ranks)
+    # split("Gold Silver Bronze", ranks)
+    ranks["first"] = "Gold"
+    ranks["second"] = "Silver"
+    ranks["third"] = "Bronze"
     if ( sun > 1000) {
-        rank = ranks[1]
+        rank = ranks["first"]
     } else if (sum > 800) {
-        rank = ranks[2]
+        rank = ranks["second"]
     } else {
-        rank = ranks[3]
+        rank = ranks["third"]
     }
     return rank
 }
