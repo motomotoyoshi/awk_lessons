@@ -1,7 +1,10 @@
 BEGIN {
     split("Gold Silver Bronze", ranks)
-    print ranks[1]
-    exit
+    print "Available Ranks:"
+    for (i = 1: i <= length(ranks); i++) {
+        print ranks[i]
+    }
+    print "------"
 }
 NR < 4 {
     sum = 0
@@ -13,5 +16,12 @@ NR < 4 {
         }
         sum += $i
     }
-    printf "Name: %-10s Sum: %10d\n", $3, sum
+    if ( sun > 1000) {
+        rank = ranks[1]
+    } else if (sum > 800) {
+        rank = ranks[2]
+    } else {
+        rank = ranks[3]
+    }
+    printf "Name: %-10s Sum: %10d Rank: %-10s\n", $3, sum, rank
 }
