@@ -1,7 +1,7 @@
 BEGIN {
     split("Gold Silver Bronze", ranks)
     print "Available Ranks:"
-    for (i = 1: i <= length(ranks); i++) {
+    for (i = 1; i <= length(ranks); i++) {
         print ranks[i]
     }
     print "------"
@@ -10,10 +10,6 @@ NR < 4 {
     sum = 0
     i =4
     for (i = 4; i <= 7; i++){
-        if ($i < 100) {
-            # continue
-            break
-        }
         sum += $i
     }
     if ( sun > 1000) {
