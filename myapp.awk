@@ -1,3 +1,8 @@
+BEGIN {
+    split("Gold Silver Bronze", ranks)
+    print ranks[1]
+    exit
+}
 NR < 4 {
     sum = 0
     i =4
